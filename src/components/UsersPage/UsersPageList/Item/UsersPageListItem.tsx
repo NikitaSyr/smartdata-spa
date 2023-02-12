@@ -36,6 +36,9 @@ export const UsersPageListItem: React.FC<IProps> = ({item}) => {
                     </div>
                     <div>
                         Пол: {item.gender}
+                        {item.gender === "male" && " Мужской"}
+                        {item.gender === "female" && " Женский"}
+                        {((item.gender !== "male") && (item.gender !== "female")) && " Неизвестен"}
                     </div>
                 </div>
 
