@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/smartdata-spa/static/css/main.95af3525.css",
-    "main.js": "/smartdata-spa/static/js/main.637f6923.js",
+    "main.css": "/smartdata-spa/static/css/main.d4b80bfa.css",
+    "main.js": "/smartdata-spa/static/js/main.8708314f.js",
     "static/js/787.eea8900c.chunk.js": "/smartdata-spa/static/js/787.eea8900c.chunk.js",
     "static/media/user.svg": "/smartdata-spa/static/media/user.b3be855cb111048df477f4bd99569af2.svg",
     "index.html": "/smartdata-spa/index.html",
-    "main.95af3525.css.map": "/smartdata-spa/static/css/main.95af3525.css.map",
-    "main.637f6923.js.map": "/smartdata-spa/static/js/main.637f6923.js.map",
+    "main.d4b80bfa.css.map": "/smartdata-spa/static/css/main.d4b80bfa.css.map",
+    "main.8708314f.js.map": "/smartdata-spa/static/js/main.8708314f.js.map",
     "787.eea8900c.chunk.js.map": "/smartdata-spa/static/js/787.eea8900c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.95af3525.css",
-    "static/js/main.637f6923.js"
+    "static/css/main.d4b80bfa.css",
+    "static/js/main.8708314f.js"
   ]
 }
