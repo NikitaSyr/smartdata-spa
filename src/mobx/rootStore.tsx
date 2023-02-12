@@ -1,13 +1,14 @@
 import usersPageStore, {UsersPageStore} from "../components/UsersPage/Store/usersPageStore";
+import postsPageStore, {PostsPageStore} from "../components/PostsPage/Store/postsPageStore";
 
 export type RootStore = {
     usersPageStore: UsersPageStore;
-    // commentStore: CommentStore;
+    postsPageStore: PostsPageStore;
 }
 
 const rootStore: RootStore = {
     usersPageStore,
-    // commentStore,
+    postsPageStore,
 };
 
 export default rootStore;

@@ -1,0 +1,15 @@
+:root {
+    /*Colors*/
+    --color-main-blue: #A0B9F5;
+    --color-main-grey-blue: #B7C8ED;
+    --color-main-dark-blue: #00050F;
+    --color-main-blue-outline: #31487F;
+    --color-main-white: #FFF;
+    --color-main-background: #E2E9F9;
+
+    /*Font sizes*/
+    --font-size-main-large: 30px;
+    --font-size-main-medium: 20px;
+    --font-size-main-small: 16px;
+    --font-size-main-xsmall: 12px;
+}

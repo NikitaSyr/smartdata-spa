@@ -1,70 +1,55 @@
-import {Button} from "@mui/material";
+import {Pagination} from "@mui/material";
 import {useStore} from "../../mobx/store";
 import {useEffect} from "react";
 import c from "./UsersPage.module.sass"
+import {observer} from "mobx-react-lite";
+import {useNavigate, useParams} from "react-router-dom";
+import {ROUTE_USERS} from "../../constants/routes";
+import {UsersPageList} from "./UsersPageList/UsersPageList";
+import {MainLoader} from "../../common/loaders/MainLoader";
 
-export const Foo = () => {
+export const UsersPage = observer(() => {
     const {usersPageStore} = useStore();
-    console.log("render")
-    const usersList= usersPageStore.getUsersList()
-    console.log(usersList)
-    const usersListData = usersList.map(item => {
-            return (
-                <div
-                    key={item.id}
-                >
-                    {item.name}
-                </div>
-            )
+    const params = useParams()
+    const navigate = useNavigate()
+
+    const isUsersListLoading = usersPageStore.getIsUsersLoading()
+    useEffect(() => {
+            if (params.users_page) {
+                usersPageStore.loadUsersListAsyncAction(params.users_page.substring(1))
+            }
+        }, [params.users_page, usersPageStore]
+    );
+
+    const handlePageChange = (e: any, value: number) => {
+        if (params.users_page) {
+            navigate(`${ROUTE_USERS}:${value.toString()}`);
         }
-    )
-
-    return (
-        <>
-            {usersListData}
-        </>
-    )
-}
-
-export const UsersPage = () => {
-    const {usersPageStore} = useStore();
-    const loadUsers = () => {
-        const data = usersPageStore.loadUsersListAsyncAction("1")
     }
-    const isUsersPageLoading = usersPageStore.usersPageData.isUsersListLoading
-    console.log(isUsersPageLoading)
-    // console.log(usersPageStore.usersList)
-
-    console.log(usersPageStore)
-
-    // useEffect(() => {
-    //     usersPageStore.loadUsersListAsyncAction("1")
-    //     }, [usersPageStore, usersPageStore.usersPageData.usersList]
-    // )
-
-    const f = usersPageStore.getUsersList()
-    console.log(f)
-
-    // console.log(usersPageStore.usersPageData.foo)
-
-    // const usersListData = usersData.map(item => {
-
 
     return (
         <div
-            className={c.UserPage}
+            className={c.UsersPage}
         >
-            <Button
-                onClick={loadUsers}
+            <div
+                className={c.UsersPageContent}
             >
-                Жмак
-            </Button>
-            {/*{isUsersPageLoading*/}
-            {/*    ?*/}
-            {/*    <div>Loading</div>*/}
-            {/*    :*/}
-            <Foo/>
-            {/*}*/}
+                {isUsersListLoading
+                    ?
+                    <div>
+                        <MainLoader/>
+                    </div>
+                    :
+                    <UsersPageList/>
+                }
+            </div>
+
+            <Pagination
+                className={c.UsersPagePagination}
+                count={20}
+                color={"primary"}
+                onChange={handlePageChange}
+            />
         </div>
     )
-}
+})

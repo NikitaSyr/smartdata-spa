@@ -2,7 +2,7 @@ import axiosInstance from "../../../api/axiosConfig";
 import {IUserData} from "../Types/usersPageTypes";
 
 const usersBaseUrl = "users";
-const usersPerPage = "20";
+const usersPerPage = "15";
 
 export const usersPageApi = {
     async getUsersListByPage(page_number: string): Promise<IUserData[]> {

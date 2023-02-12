@@ -17,5 +17,4 @@ export interface IUsersPageAPIListRequest {
 export interface IUsersPageStore {
     usersList: IUserData[]
     isUsersListLoading: boolean
-    foo: string
 }

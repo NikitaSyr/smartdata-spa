@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
 import {
     ROUTE_ANY,
     ROUTE_ROOT,
@@ -10,27 +10,37 @@ import {
     ROUTE_COMMENTS,
     PARAMETER_USERS_PAGE,
     PARAMETER_POSTS_PAGE,
-    PARAMETER_COMMENTS_PAGE,
+    PARAMETER_COMMENTS_PAGE, PARAMETER_USER_ID, PARAMETER_POST_ID,
 } from "./constants/routes";
 import user from "./img/icons/user.svg"
 import {UsersPage} from "./components/UsersPage/UsersPage";
+import {Sidebar} from "./components/Sidebar/Sidebar";
+import {PostsPage} from "./components/PostsPage/PostsPage";
 
 const App = () => {
-    console.log(ROUTE_USERS + PARAMETER_USERS_PAGE)
+    // console.log(ROUTE_USERS + PARAMETER_USERS_PAGE)
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className="App">
-                <img src={user} alt=""/>
+                <Sidebar/>
+                {/*<img src={user} alt=""/>*/}
                 <Routes>
-                    <Route path={ROUTE_USERS} element={<UsersPage/>}/>
-                    {/*<Route path={ROUTE_POSTS + PARAMETER_POSTS_PAGE} element={<LoginRedirectComponent/>}/>*/}
-                    {/*<Route path={ROUTE_COMMENTS + PARAMETER_COMMENTS_PAGE} element={<EmployeesPage/>}/>*/}
-                    {/*<Route path={ROUTE_ROOT} element={<MainPage/>}/>*/}
-                    <Route path={ROUTE_ANY} element={<div>404 PAGE NOT FOUND</div>}/>
+                    {/*<Route path={ROUTE_ROOT} element={<div>ddd</div>}/>*/}
+                    {/*<Route path="users">*/}
+                    <Route path={ROUTE_USERS + PARAMETER_USERS_PAGE} element={<UsersPage/>}/>
+
+                    <Route path={ROUTE_USERS + PARAMETER_USERS_PAGE +
+                        ROUTE_POSTS + PARAMETER_USER_ID + PARAMETER_POSTS_PAGE}
+                           element={<PostsPage/>}/>
+                    {/*<Route path={ROUTE_USERS + PARAMETER_USERS_PAGE +*/}
+                    {/*    ROUTE_POSTS + PARAMETER_USER_ID + PARAMETER_POSTS_PAGE +*/}
+                    {/*    ROUTE_COMMENTS + PARAMETER_POST_ID + PARAMETER_COMMENTS_PAGE}*/}
+                    {/*       element={<CommentsPage/>}/>*/}
+                    <Route path="*" element={<div>404 PAGE NOT FOUND</div>}/>
                 </Routes>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
